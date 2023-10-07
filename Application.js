@@ -1,33 +1,51 @@
-let step = 1;
-function updateContent(step) {
-    if (step === 2) {
-        circle.style.float = "right";
-        content.innerHTML = `
-            <h1>Accomplishment 2</h1>
-            <p>Description of your second accomplishment.</p>
-        `;
-        step++
-        console.log(step)
-    } else if (step === 3) {
-        circle.style.float = "left";
-        document.querySelector('.accomplishment_3').innerHTML = `
-            <h1>Accomplishment 3</h1>
-            <p>Description of your third accomplishment.</p>
-        `;
-        step++
-        console.log(step)
-    } else {
-        // Add more steps as needed
-        circle.style.float = "right";
-        content.innerHTML = `
-            <h1>No more accomplishments</h1>
-            <p>Congratulations on your achievements!</p>
-        `;
-        nextBtn.style.display = "none";
-        step++
-        console.log(step)
-    }
+const circle = document.getElementById("circle");
+const content = document.getElementById("content");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
 
-    circle.textContent = step;
+const accomplishments = [
+    {
+        title: "Accomplishment 1",
+        description: "Description of your first accomplishment."
+    },
+    {
+        title: "Accomplishment 2",
+        description: "Description of your second accomplishment."
+    },
+    {
+        title: "Accomplishment 3",
+        description: "Description of your third accomplishment."
+    }
+    // Add more accomplishments as needed
+];
+
+let step = 0;
+
+nextBtn.addEventListener("click", () => {
+    if (step < accomplishments.length - 1) {
+        step++;
+        updateContent(step);
+    }
+});
+
+prevBtn.addEventListener("click", () => {
+    if (step > 0) {
+        step--;
+        updateContent(step);
+    }
+});
+
+function updateContent(step) {
+    content.classList.remove("slide-in");
+    content.style.display = "none";
+
+    content.innerHTML = `
+        <h1>${accomplishments[step].title}</h1>
+        <p>${accomplishments[step].description}</p>
+    `;
+
+    circle.textContent = step + 1; // Adding 1 to match the 1-based index
+    content.offsetWidth; // Trigger reflow
+    content.classList.add("slide-in");
     content.style.display = "block";
 }
