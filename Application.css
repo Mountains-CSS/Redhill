@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Merriweather:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: dodgerblue;
+    color: #fff;
+    left: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav li {
+    flex: 1;
+}
+
+nav li a {
+    display: block;
+    padding: 16px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background-color: #f2f2f2;
+}
+
+video {
+    width: 80%;
+    height: auto;
+}
+
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    ul {
+        width: 100%;
+    }
+}
+
+.container {
+    text-align: center;
+}
+
+.circle {
+    font-size: 2em;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    line-height: 60px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: none;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
